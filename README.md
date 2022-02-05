@@ -2,7 +2,11 @@ Static audio-only FFmpeg builds
 ===============================
 
 This project contains scripts for small static audio-only FFmpeg builds that are used
-for Chromaprint packaging.
+for packaging [Open Note Block Studio](https://opennbs.org).
+
+This is a fork from [acoustid/ffmpeg-build](https://github.com/acoustid/ffmpeg-build/), which
+only supports audio decoding. Unlike that version, this build allows both decoding _and_
+encoding audio to a variety of common formats. **[WIP]**
 
 Building is done using GitHub Actions. You can find the built binaries on the releases page.
 
