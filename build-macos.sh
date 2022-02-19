@@ -12,6 +12,11 @@ then
 	curl -O $FFMPEG_TARBALL_URL
 fi
 
+if [ ! -e $LAME_TARBALL ]
+then
+    curl -L -O $LAME_TARBALL_URL
+fi
+
 : ${TARGET?}
 
 case $TARGET in

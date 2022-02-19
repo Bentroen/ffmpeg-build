@@ -12,6 +12,11 @@ then
 	curl -s -L -O $FFMPEG_TARBALL_URL
 fi
 
+if [ ! -e $LAME_TARBALL ]
+then
+    curl -s -L -O $LAME_TARBALL_URL
+fi
+
 : ${ARCH?}
 
 OUTPUT_DIR=artifacts/ffmpeg-$FFMPEG_VERSION-audio-$ARCH-w64-mingw32
