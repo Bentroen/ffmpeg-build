@@ -37,6 +37,12 @@ OUTPUT_DIR=artifacts/ffmpeg-$FFMPEG_VERSION-audio-$TARGET
 BUILD_DIR=$BASE_DIR/$(mktemp -d build.XXXXXXXX)
 trap 'rm -rf $BUILD_DIR' EXIT
 
+tar xzvf $BASE_DIR/$LAME_TARBALL
+cd lame-$LAME_VERSION
+./configure --prefix="$BUILD_DIR" --disable-shared --enable-nasm
+make V=1
+make install
+
 cd $BUILD_DIR
 tar --strip-components=1 -xf $BASE_DIR/$FFMPEG_TARBALL
 

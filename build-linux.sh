@@ -12,6 +12,11 @@ then
 	curl -s -L -O $FFMPEG_TARBALL_URL
 fi
 
+if [ ! -e $LAME_TARBALL ]
+then
+    curl -s -L -O $LAME_TARBALL_URL
+fi
+
 : ${ARCH?}
 
 OUTPUT_DIR=artifacts/ffmpeg-$FFMPEG_VERSION-audio-$ARCH-linux-gnu
@@ -62,6 +67,12 @@ esac
 
 BUILD_DIR=$(mktemp -d -p $(pwd) build.XXXXXXXX)
 trap 'rm -rf $BUILD_DIR' EXIT
+
+tar xzvf $BASE_DIR/$LAME_TARBALL
+cd lame-$LAME_VERSION
+./configure --prefix="$BUILD_DIR" --disable-shared --enable-nasm
+make
+make install
 
 cd $BUILD_DIR
 tar --strip-components=1 -xf $BASE_DIR/$FFMPEG_TARBALL
