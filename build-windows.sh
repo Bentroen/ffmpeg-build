@@ -26,7 +26,7 @@ trap 'rm -rf $BUILD_DIR' EXIT
 
 tar xzvf $BASE_DIR/$LAME_TARBALL
 cd lame-$LAME_VERSION
-./configure --prefix="$BUILD_DIR" --disable-shared --enable-nasm
+./configure --host=$ARCH-w64-mingw32 --prefix="$BUILD_DIR" --disable-shared --enable-static
 make
 make install
 
@@ -35,8 +35,7 @@ tar --strip-components=1 -xf $BASE_DIR/$FFMPEG_TARBALL
 
 FFMPEG_CONFIGURE_FLAGS+=(
     --prefix=$BASE_DIR/$OUTPUT_DIR
-    --extra-ldflags="-L$BUILD_DIR/lib"
-    --extra-cflags="-I$BUILD_DIR/include -static -static-libgcc -static-libstdc++"
+    --extra-cflags="-static -static-libgcc -static-libstdc++"
     --target-os=mingw32
     --arch=$ARCH
     --cross-prefix=$ARCH-w64-mingw32-
