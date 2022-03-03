@@ -14,7 +14,7 @@ fi
 
 if [ ! -e $LAME_TARBALL ]
 then
-    curl -v -L -O $LAME_TARBALL_URL
+    curl -s -L -O $LAME_TARBALL_URL
 fi
 
 : ${ARCH?}
@@ -68,7 +68,7 @@ esac
 BUILD_DIR=$(mktemp -d -p $(pwd) build.XXXXXXXX)
 trap 'rm -rf $BUILD_DIR' EXIT
 
-tar xzvf --strip-components=1 $BASE_DIR/$LAME_TARBALL
+tar xzvf $LAME_TARBALL
 cd lame-$LAME_VERSION
 ./configure --prefix="$BUILD_DIR" --disable-shared --enable-nasm
 make
