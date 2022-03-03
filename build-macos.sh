@@ -55,6 +55,8 @@ FFMPEG_CONFIGURE_FLAGS+=(
     --extra-ldflags="-L$BUILD_DIR/lib -target $TARGET"
     --extra-cflags="-I$BUILD_DIR/include -target $TARGET"
     --enable-runtime-cpudetect
+    --extra-libs=-lpthread
+    --extra-libs=-lm
 )
 
 ./configure "${FFMPEG_CONFIGURE_FLAGS[@]}" || (cat ffbuild/config.log && exit 1)
