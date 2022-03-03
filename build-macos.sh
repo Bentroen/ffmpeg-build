@@ -52,8 +52,8 @@ FFMPEG_CONFIGURE_FLAGS+=(
     --enable-cross-compile
     --target-os=darwin
     --arch=$ARCH
-    --extra-ldflags="-target $TARGET"
-    --extra-cflags="-target $TARGET"
+    --extra-ldflags="-L$BUILD_DIR/lib -target $TARGET"
+    --extra-cflags="-I$BUILD_DIR/include -target $TARGET"
     --enable-runtime-cpudetect
 )
 

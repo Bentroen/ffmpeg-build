@@ -77,7 +77,11 @@ make install
 cd $BUILD_DIR
 tar --strip-components=1 -xf $BASE_DIR/$FFMPEG_TARBALL
 
-FFMPEG_CONFIGURE_FLAGS+=(--prefix=$BASE_DIR/$OUTPUT_DIR)
+FFMPEG_CONFIGURE_FLAGS+=(
+    --prefix=$BASE_DIR/$OUTPUT_DIR
+    --extra-ldflags="-L$BUILD_DIR/lib"
+    --extra-cflags="-I$BUILD_DIR/include"
+)
 
 ./configure "${FFMPEG_CONFIGURE_FLAGS[@]}" || (cat ffbuild/config.log && exit 1)
 
