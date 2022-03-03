@@ -6,7 +6,7 @@ FFMPEG_TARBALL_URL=http://ffmpeg.org/releases/$FFMPEG_TARBALL
 
 LAME_VERSION=3.100
 LAME_TARBALL=lame-$LAME_VERSION.tar.gz
-LAME_TARBALL_URL=https://sourceforge.net/projects/lame/files/lame/$LAME_VERSION/$LAME_TARBALL/download
+LAME_TARBALL_URL=https://downloads.sourceforge.net/project/lame/lame/$LAME_VERSION/$LAME_TARBALL
 
 FFMPEG_CONFIGURE_FLAGS=(
     --disable-shared
