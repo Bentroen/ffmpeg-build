@@ -47,6 +47,11 @@ FFMPEG_CONFIGURE_FLAGS=(
     --enable-libmp3lame
     #--enable-libvorbis
 
+    --enable-avcodec
+    --enable-avformat
+    --enable-swresample
+    --enable-filter=aresample
+
     --enable-demuxer=aac
     --enable-demuxer=aiff
     --enable-demuxer=flac
@@ -97,6 +102,7 @@ FFMPEG_CONFIGURE_FLAGS=(
 
     --enable-parser=aac
     --enable-parser=flac
+    --enable-parser=mpegaudio
     --enable-parser=vorbis
 
     --enable-muxer=aiff
