@@ -81,8 +81,6 @@ FFMPEG_CONFIGURE_FLAGS+=(
     --prefix=$BASE_DIR/$OUTPUT_DIR
     --extra-ldflags="-L$BUILD_DIR/lib"
     --extra-cflags="-I$BUILD_DIR/include"
-    --extra-libs=-lpthread
-    --extra-libs=-lm
 )
 
 ./configure "${FFMPEG_CONFIGURE_FLAGS[@]}" || (cat ffbuild/config.log && exit 1)
